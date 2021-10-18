@@ -8,7 +8,8 @@ class BarangController extends BaseController
 {
     public function index()
     {
-        echo "tes barang controller";
+        $data['page'] = 'barang/index';
+        return view('admin', $data);
     }
 	
 	public function show($id){

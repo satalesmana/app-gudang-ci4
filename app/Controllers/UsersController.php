@@ -8,7 +8,8 @@ class UsersController extends BaseController
 {
     public function index()
     {
-        echo "ini halaman users";
+		$data['page'] = 'users/index';
+        return view('admin', $data);
     }
 	
 	public function show($id){
