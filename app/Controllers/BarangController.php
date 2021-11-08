@@ -23,7 +23,13 @@ class BarangController extends BaseController
 	}
 	
 	public function create(){
-		echo "ini create function";
+		$request = $this->request->getJSON();
+
+		if($this->barangModel->save($request)){
+			return $this->response->setJson(['message'=>'data berhasil di simpan']);
+		}else{
+			return $this->response->setJson(['message'=>'data gagal di simpan']);
+		}
 	}
 
 	public function delete($id){

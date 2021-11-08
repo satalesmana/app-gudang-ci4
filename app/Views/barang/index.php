@@ -2,8 +2,7 @@
     <h1 class="h2">Master Data - Barang</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group me-2">
-        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+        <button type="button" onClick="add_new()" class="btn btn-sm btn-outline-secondary">Add New</button>
         </div>
         <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
         <span data-feather="calendar"></span>
@@ -40,6 +39,8 @@
     </tbody>
 </table>
 
+<?= $this->include('barang/form_barang'); ?>
+
 <script>
     function deleteBarang(id){
         showLoading()
@@ -52,5 +53,21 @@
                 alert(commits.message);
                 window.location.reload(false);
             });
+    }
+
+    function add_new(){
+        var formBarang = new bootstrap.Modal(document.getElementById('formBarangModal'), {
+                keyboard: false
+            });
+
+        this.clearForm()
+        formBarang.toggle();
+    }
+
+    function clearForm(){
+        document.getElementsByName('nama_barang')[0].value='';
+        document.getElementsByName('harga_jual')[0].value='';
+        document.getElementsByName('harga_beli')[0].value='';
+        document.getElementsByName('qty')[0].value='';
     }
 </script>
